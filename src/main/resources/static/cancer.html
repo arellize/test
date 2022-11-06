@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>유방암 데이터 입력 조회</h1>
+	1.데이터 입력하기(10자리 숫자 소수점 5자리까지 입력 가능)<br>
+	id<br>
+	<input id="id_input"  type="text" name="id_input"><br>
+	radius_mean<br>
+	<input id="radius_mean"  type="text" name="radius_mean"><br>
+	texture_mean<br>
+	<input id="texture_mean"  type="text" name="texture_mean"><br>
+	perimeter_mean<br>
+	<input id="perimeter_mean"  type="text" name="perimeter_mean"><br>
+	area_mean<br>
+	<input id="area_mean"  type="text" name="area_mean"><br>
+	smoothness_mean<br>
+	<input id="smoothness_mean"  type="text" name="smoothness_mean"><br>
+	compactness_mean<br>
+	<input id="compactness_mean"  type="text" name="compactness_mean"><br>
+	concavity_mean<br>
+	<input id="concavity_mean"  type="text" name="concavity_mean"><br>
+	concave_points_mean<br>
+	<input id="concave_points_mean"  type="text" name="concave_points_mean"><br>
+	symmetry_mean<br>
+	<input id="symmetry_mean"  type="text" name="symmetry_mean"><br>
+	fractal_dimension_mean<br>
+	<input id="fractal_dimension_mean"  type="text" name="fractal_dimension_mean"><br>
+	radius_se<br>
+	<input id="radius_se"  type="text" name="radius_se"><br>
+	texture_se<br>
+	<input id="texture_se"  type="text" name="texture_se"><br>
+	perimeter_se<br>
+	<input id="perimeter_se"  type="text" name="perimeter_se"><br>
+	area_se<br>
+	<input id="area_se"  type="text" name="area_se"><br>
+	smoothness_se<br>
+	<input id="smoothness_se"  type="text" name="smoothness_se"><br>
+	compactness_se<br>
+	<input id="compactness_se"  type="text" name="compactness_se"><br>
+	concavity_se<br>
+	<input id="concavity_se"  type="text" name="concavity_se"><br>
+	concave_points_se<br>
+	<input id="concave_points_se"  type="text" name="concave_points_se"><br>
+	symmetry_se<br>
+	<input id="symmetry_se"  type="text" name="symmetry_se"><br>
+	fractal_dimension_se<br>
+	<input id="fractal_dimension_se"  type="text" name="fractal_dimension_se"><br>
+	radius_worst<br>
+	<input id="radius_worst"  type="text" name="radius_worst"><br>
+	texture_worst<br>
+	<input id="texture_worst"  type="text" name="texture_worst"><br>
+	perimeter_worst<br>
+	<input id="perimeter_worst"  type="text" name="perimeter_worst"><br>
+	area_worst<br>
+	<input id="area_worst"  type="text" name="area_worst"><br>
+	smoothness_worst<br>
+	<input id="smoothness_worst"  type="text" name="smoothness_worst"><br>
+	compactness_worst<br>
+	<input id="compactness_worst"  type="text" name="compactness_worst"><br>
+	concavity_worst<br>
+	<input id="concavity_worst"  type="text" name="concavity_worst"><br>
+	concave_points_worst<br>
+	<input id="concave_points_worst"  type="text" name="concave_points_worst"><br>
+	symmetry_worst<br>
+	<input id="symmetry_worst"  type="text" name="symmetry_worst"><br>
+	fractal_dimension_worst<br>
+	<input id="fractal_dimension_worst"  type="text" name="fractal_dimension_worst"><br>
+	
+	<button onclick="input1()">입력</button>
+	<div class="w3-container" id="demo"></div>
+	2.id로 조회하기<br>
+	<input id="id_search"  type="text" name="id_search"><br>
+	<button onclick="input2()">조회</button>
+	<div class="w3-container" id="demo2"></div>
+	
+	
+	<script type="text/javascript">
+	
+		const xhttp = new XMLHttpRequest();
+		let res_data;
+		
+		
+		function input1() {
+			let id_input= document.getElementById("id_input").value;
+			id_input=parseInt(id_input);
+			
+			let radius_mean= document.getElementById("radius_mean").value;
+			let texture_mean= document.getElementById("texture_mean").value;
+			let perimeter_mean= document.getElementById("perimeter_mean").value;
+			let area_mean= document.getElementById("area_mean").value;
+			let smoothness_mean= document.getElementById("smoothness_mean").value;
+			let compactness_mean= document.getElementById("compactness_mean").value;
+			let concavity_mean= document.getElementById("concavity_mean").value;
+			let concave_points_mean= document.getElementById("concave_points_mean").value;
+			let symmetry_mean= document.getElementById("symmetry_mean").value;
+			let fractal_dimension_mean= document.getElementById("fractal_dimension_mean").value;
+			let radius_se= document.getElementById("radius_se").value;
+			let texture_se= document.getElementById("texture_se").value;
+			let perimeter_se= document.getElementById("perimeter_se").value;
+			let area_se= document.getElementById("area_se").value;
+			let smoothness_se= document.getElementById("smoothness_se").value;
+			let compactness_se= document.getElementById("compactness_se").value;
+			let concavity_se= document.getElementById("concavity_se").value;
+			let concave_points_se= document.getElementById("concave_points_se").value;
+			let symmetry_se= document.getElementById("symmetry_se").value;
+			let fractal_dimension_se= document.getElementById("fractal_dimension_se").value;
+			let radius_worst= document.getElementById("radius_worst").value;
+			let texture_worst= document.getElementById("texture_worst").value;
+			let perimeter_worst= document.getElementById("perimeter_worst").value;
+			let area_worst= document.getElementById("area_worst").value;
+			let smoothness_worst= document.getElementById("smoothness_worst").value;
+			let compactness_worst= document.getElementById("compactness_worst").value;
+			let concavity_worst= document.getElementById("concavity_worst").value;
+			let concave_points_worst= document.getElementById("concave_points_worst").value;
+			let symmetry_worst= document.getElementById("symmetry_worst").value;
+			let fractal_dimension_worst= document.getElementById("fractal_dimension_worst").value;
+			
+			let data_string=radius_mean+","+texture_mean+","+perimeter_mean+","+area_mean+","+smoothness_mean+","+compactness_mean+","+concavity_mean+","+concave_points_mean+","+symmetry_mean+","+fractal_dimension_mean+","+radius_se+","+texture_se+","+perimeter_se+","+area_se+","+smoothness_se+","+compactness_se+","+concavity_se+","+concave_points_se+","+symmetry_se+","+fractal_dimension_se+","+radius_worst+","+texture_worst+","+perimeter_worst+","+area_worst+","+smoothness_worst+","+compactness_worst+","+concavity_worst+","+concave_points_worst+","+symmetry_worst+","+fractal_dimension_worst
+			
+			
+			
+			let params={
+					"id":id_input,
+					"data":data_string
+			}
+			
+			
+			alert(JSON.stringify(params));
+			
+			xhttp.onload=function(){
+				res_data = this.responseText;
+				alert(res_data);
+				
+				document.getElementById("demo").innerHTML = res_data;
+			}
+			
+			xhttp.open("post","https://jeb5dhyezf.execute-api.ap-northeast-2.amazonaws.com/test/sagemaker")
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
+			xhttp.send(JSON.stringify(params))
+			/* xhttp.onload = function() {
+				res_data = this.responseText;
+				alert(res_data);
+				console.log(res_data);
+				
+				document.getElementById("demo").innerHTML = res_data;
+				
+			}
+			xhttp.open("post", `probono?command=activist&activistId=${search1}`, true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=UTF-8");
+			xhttp.send(); */
+			
+			
+			/* var xhr = new XMLHttpRequest();
+			   xhr.open(method, url);
+			   xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
+			   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+			   xhr.onload = requestComplete;
+			   xhr.send(JSON.stringify(params)); */
+		
+		}
+		function input2(){
+			alert("asdf");
+		}
+	</script>
+</body>
+</html>
